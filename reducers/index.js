@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
 import { REQUEST_PATIENTS, RECEIVE_PATIENTS, FAILURE_PATIENTS } from '../actions/data'
+import { ADD_QUERY_FILTER } from '../actions/user'
 import mergeAll from 'lodash/fp/mergeAll'
 
 const entities = (state = {
@@ -35,10 +36,24 @@ const failureMessage = (state = null, action) => {
   }
 }
 
+const queryFilters = (state = [], action) => {
+  switch (action.type) {
+  case ADD_QUERY_FILTER:
+    return [...state, action.filter]
+  default:
+    return state
+  }
+}
+
+const filters = combineReducers({
+  queryFilters
+})
+
 const rootReducer = combineReducers({
   entities,
   fetching,
-  failureMessage
+  failureMessage,
+  filters
 })
 
 export default rootReducer
