@@ -7,7 +7,7 @@ import PatientTable from '../components/PatientTable'
 class Root extends React.Component {
   componentDidMount() {
     const { dispatch } = this.props
-    dispatch(fetchPatients)
+    dispatch(fetchPatients())
   }
 
   render() {

@@ -15,7 +15,7 @@ const receivePatients = ({ patients }) => ({
   }
 })
 
-export const fetchPatients = dispatch => {
+export const fetchPatients = () => dispatch => {
   dispatch(requestPatients())
   return fetch('https://sleepcoach.us/api/demo?id=demo', {
     method: 'get',
