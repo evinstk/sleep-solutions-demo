@@ -26,3 +26,10 @@ gulp.task('default', () => {
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('./public/'))
 })
+
+gulp.task('watch', () => {
+  return gulp.watch([
+    'app.js'
+  ], ['default'])
+    .remove('public')
+})
