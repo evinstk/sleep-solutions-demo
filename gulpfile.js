@@ -30,7 +30,9 @@ gulp.task('default', () => {
 gulp.task('watch', () => {
   return gulp.watch([
     'app.js',
-    'actions/*.js'
+    'actions/*.js',
+    'reducers/*.js',
+    'store/*.js'
   ], ['default'])
     .remove('public')
 })
