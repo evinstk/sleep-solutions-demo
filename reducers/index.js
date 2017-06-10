@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { RECEIVE_PATIENTS } from '../actions/data'
+import { REQUEST_PATIENTS, RECEIVE_PATIENTS } from '../actions/data'
 import mergeAll from 'lodash/fp/mergeAll'
 
 const entities = (state = {
@@ -11,8 +11,20 @@ const entities = (state = {
   return state
 }
 
+const fetching = (state = false, action) => {
+  switch (action.type) {
+  case REQUEST_PATIENTS:
+    return true
+  case RECEIVE_PATIENTS:
+    return false
+  default:
+    return state
+  }
+}
+
 const rootReducer = combineReducers({
-  entities
+  entities,
+  fetching
 })
 
 export default rootReducer

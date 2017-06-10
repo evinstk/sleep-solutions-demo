@@ -11,21 +11,26 @@ class Root extends React.Component {
   }
 
   render() {
-    const { patients } = this.props
+    const { fetching, patients } = this.props
 
     return (
       <div>
         <h1>Patients</h1>
-        <PatientTable patients={patients} />
+        {
+          fetching ?
+            <div>Getting patient data</div> :
+            <PatientTable patients={patients} />
+        }
       </div>
     )
   }
 }
 Root.propTypes = {
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  fetching: PropTypes.bool.isRequired
 }
-Root = connect(({ entities: { patients } }) => {
-  return { patients }
+Root = connect(({ entities: { patients }, fetching }) => {
+  return { patients, fetching }
 })(Root)
 
 export default Root
