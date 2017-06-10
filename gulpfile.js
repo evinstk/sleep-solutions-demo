@@ -31,6 +31,7 @@ gulp.task('watch', () => {
   return gulp.watch([
     'app.js',
     'actions/*.js',
+    'components/*.js',
     'containers/*.js',
     'reducers/*.js',
     'store/*.js'

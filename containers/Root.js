@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import map from 'lodash/fp/map'
 import { fetchPatients } from '../actions/data'
+import PatientTable from '../components/PatientTable'
 
 class Root extends React.Component {
   componentDidMount() {
@@ -16,9 +16,7 @@ class Root extends React.Component {
     return (
       <div>
         <h1>Patients</h1>
-        <ul>
-          {map(p => <li key={p.account_number}>{p.first_name} {p.last_name}</li>)(patients)}
-        </ul>
+        <PatientTable patients={patients} />
       </div>
     )
   }
