@@ -11,15 +11,18 @@ class Root extends React.Component {
   }
 
   render() {
-    const { fetching, patients } = this.props
+    const { fetching, patients, failureMessage } = this.props
 
     return (
       <div>
         <h1>Patients</h1>
         {
           fetching ?
-            <div>Getting patient data</div> :
-            <PatientTable patients={patients} />
+            <div>Getting patient data</div> : (
+              failureMessage ?
+                <div>Sorry, an error occurred: {failureMessage}</div> :
+                <PatientTable patients={patients} />
+            )
         }
       </div>
     )
@@ -27,10 +30,11 @@ class Root extends React.Component {
 }
 Root.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  fetching: PropTypes.bool.isRequired
+  fetching: PropTypes.bool.isRequired,
+  failureMessage: PropTypes.string
 }
-Root = connect(({ entities: { patients }, fetching }) => {
-  return { patients, fetching }
+Root = connect(({ entities: { patients }, fetching, failureMessage }) => {
+  return { patients, fetching, failureMessage }
 })(Root)
 
 export default Root
