@@ -1,5 +1,8 @@
 import React from 'react'
 import map from 'lodash/fp/map'
+import moment from 'moment'
+
+const TIME_FORMAT = 'MMM DD, YYYY h:mm:ss a'
 
 const PatientTable = ({ patients }) => (
   <table>
@@ -18,8 +21,8 @@ const PatientTable = ({ patients }) => (
           <td>{p.account_number}</td>
           <td>{p.last_name}</td>
           <td>{p.first_name}</td>
-          <td>{p.created_at}</td>
-          <td>{p.udpated_at}</td>
+          <td>{moment(p.created_at).format(TIME_FORMAT)}</td>
+          <td>{moment(p.udpated_at).format(TIME_FORMAT)}</td>
         </tr>
       ))(patients)}
     </tbody>
