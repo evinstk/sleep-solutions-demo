@@ -27,18 +27,20 @@ class TableFilters extends React.Component {
   render() {
     const { queryFilters } = this.props
     return (
-      <div>
+      <div className="table-filters">
         <div>
           <i className="material-icons add-filter"
              title="Add filter"
              onClick={this.addQueryFilter}>add_circle</i>
         </div>
-        {queryFilters.map((filter, i) => (
-          <Filter key={i}
-                  filter={filter}
-                  fields={FIELDS}
-                  onFilterChange={newFilter => this.modifyQueryFilter(newFilter, i)} />
-        ))}
+        <div>
+          {queryFilters.map((filter, i) => (
+            <Filter key={i}
+                    filter={filter}
+                    fields={FIELDS}
+                    onFilterChange={newFilter => this.modifyQueryFilter(newFilter, i)} />
+          ))}
+        </div>
       </div>
     )
   }

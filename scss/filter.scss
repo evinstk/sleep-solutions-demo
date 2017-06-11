@@ -1,3 +1,43 @@
-.add-filter {
-  cursor: pointer;
+.table-filters {
+  display: flex;
+
+  > div {
+    margin: 0.5rem;
+  }
+
+  .add-filter {
+    cursor: pointer;
+  }
+
+  .filter + .filter {
+    margin-top: 0.2rem;
+  }
+}
+
+.filter {
+  animation: dropin 0.5s ease 1;
+  @keyframes dropin {
+    from {
+      opacity: 0;
+      transform: translateY(-0.5rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  display: flex;
+  align-items: center;
+
+  > * {
+    margin-right: 2rem;
+  }
+
+  .query {
+    width: 25rem;
+  }
+
+  .remove-filter {
+    cursor: pointer;
+  }
 }

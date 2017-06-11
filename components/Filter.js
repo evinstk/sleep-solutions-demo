@@ -27,7 +27,7 @@ class Filter extends React.Component {
   render() {
     const { filter, fields } = this.props
     return (
-      <div>
+      <div className="filter">
         <select value={filter.field} onChange={this.handleFieldChange}>
           {fields.map((f, i) => (
             <option key={i}
@@ -36,7 +36,8 @@ class Filter extends React.Component {
             </option>
           ))}
         </select>
-        <input type="text" value={filter.query} onChange={this.handleQueryChange} />
+        <input className="query" type="text" value={filter.query} onChange={this.handleQueryChange} />
+        <i className="material-icons remove-filter" title="Remove filter">remove_circle</i>
       </div>
     )
   }
