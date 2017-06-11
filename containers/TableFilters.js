@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { addQueryFilter, modifyQueryFilter } from '../actions/user'
+import { addQueryFilter, modifyQueryFilter, removeQueryFilter } from '../actions/user'
 import { connect } from 'react-redux'
 import Filter from '../components/Filter'
 
@@ -14,6 +14,8 @@ class TableFilters extends React.Component {
   constructor(props) {
     super(props)
     this.addQueryFilter = this.addQueryFilter.bind(this)
+    this.modifyQueryFilter = this.modifyQueryFilter.bind(this)
+    this.removeFilter = this.removeFilter.bind(this)
   }
 
   addQueryFilter() {
@@ -22,6 +24,10 @@ class TableFilters extends React.Component {
 
   modifyQueryFilter(filter, index) {
     this.props.dispatch(modifyQueryFilter(filter, index))
+  }
+
+  removeFilter(index) {
+    this.props.dispatch(removeQueryFilter(index))
   }
 
   render() {
@@ -38,7 +44,8 @@ class TableFilters extends React.Component {
             <Filter key={i}
                     filter={filter}
                     fields={FIELDS}
-                    onFilterChange={newFilter => this.modifyQueryFilter(newFilter, i)} />
+                    onFilterChange={newFilter => this.modifyQueryFilter(newFilter, i)}
+                    onRemove={() => this.removeFilter(i)} />
           ))}
         </div>
       </div>

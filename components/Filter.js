@@ -7,6 +7,7 @@ class Filter extends React.Component {
     super(props)
     this.handleFieldChange = this.handleFieldChange.bind(this)
     this.handleQueryChange = this.handleQueryChange.bind(this)
+    this.handleRemove = this.handleRemove.bind(this)
   }
 
   handleChange(key, event) {
@@ -24,6 +25,10 @@ class Filter extends React.Component {
     this.handleChange('query', event)
   }
 
+  handleRemove(event) {
+    this.props.onRemove();
+  }
+
   render() {
     const { filter, fields } = this.props
     return (
@@ -37,7 +42,9 @@ class Filter extends React.Component {
           ))}
         </select>
         <input className="query" type="text" value={filter.query} onChange={this.handleQueryChange} />
-        <i className="material-icons remove-filter" title="Remove filter">remove_circle</i>
+        <i className="material-icons remove-filter"
+           title="Remove filter"
+           onClick={this.handleRemove}>remove_circle</i>
       </div>
     )
   }
@@ -45,7 +52,8 @@ class Filter extends React.Component {
 Filter.propTypes = {
   filter: PropTypes.object.isRequired,
   onFilterChange: PropTypes.func.isRequired,
-  fields: PropTypes.array.isRequired
+  fields: PropTypes.array.isRequired,
+  onRemove: PropTypes.func.isRequired
 }
 
 export default Filter
