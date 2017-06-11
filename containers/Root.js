@@ -4,6 +4,9 @@ import { connect } from 'react-redux'
 import { fetchPatients } from '../actions/data'
 import TableFilters from '../containers/TableFilters'
 import PatientTable from '../components/PatientTable'
+import filter from 'lodash/fp/filter'
+import map from 'lodash/fp/map'
+import flow from 'lodash/fp/flow'
 
 class Root extends React.Component {
   componentDidMount() {
@@ -36,7 +39,15 @@ Root.propTypes = {
   fetching: PropTypes.bool.isRequired,
   failureMessage: PropTypes.string
 }
-Root = connect(({ entities: { patients }, fetching, failureMessage }) => {
+Root = connect(({
+  entities: { patients },
+  fetching,
+  failureMessage,
+  filters: { queryFilters }
+}) => {
+  patients = flow(
+    map(({ field, query }) => filter(p => RegExp(query, 'i').test(p[field])))(queryFilters)
+  )(patients)
   return { patients, fetching, failureMessage }
 })(Root)
 
