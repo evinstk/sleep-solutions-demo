@@ -2,22 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { fetchPatients } from '../actions/data'
-import { addQueryFilter } from '../actions/user'
+import TableFilters from '../containers/TableFilters'
 import PatientTable from '../components/PatientTable'
 
 class Root extends React.Component {
-  constructor(props) {
-    super(props)
-    this.addQueryFilter = this.addQueryFilter.bind(this)
-  }
-
   componentDidMount() {
     const { dispatch } = this.props
     dispatch(fetchPatients())
-  }
-
-  addQueryFilter() {
-    this.props.dispatch(addQueryFilter())
   }
 
   render() {
@@ -32,7 +23,7 @@ class Root extends React.Component {
             failureMessage ?
               <div>Sorry, an error occurred: {failureMessage}</div> :
               <div>
-                <input type="button" value="Add Query Filter" onClick={this.addQueryFilter} />
+                <TableFilters />
                 <PatientTable patients={patients} />
               </div>
         }
