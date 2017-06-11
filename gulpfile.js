@@ -5,6 +5,7 @@ const source = require('vinyl-source-stream')
 const buffer = require('vinyl-buffer')
 const sourcemaps = require('gulp-sourcemaps')
 const gutil = require('gulp-util')
+const sass = require('gulp-sass')
 
 gulp.task('default', () => {
   const b = browserify({
@@ -28,8 +29,14 @@ gulp.task('default', () => {
     .pipe(gulp.dest('./public/'))
 })
 
+gulp.task('sass', () => {
+  return gulp.src('./scss/base.scss')
+    .pipe(sass().on('error', err => sass.logError(err)))
+    .pipe(gulp.dest('./public/css'))
+})
+
 gulp.task('watch', () => {
-  return gulp.watch([
+  gulp.watch([
     'app.js',
     'actions/*.js',
     'components/*.js',
@@ -37,5 +44,5 @@ gulp.task('watch', () => {
     'reducers/*.js',
     'store/*.js'
   ], ['default'])
-    .remove('public')
+  gulp.watch('./scss/**/*.scss', ['sass'])
 })

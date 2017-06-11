@@ -19,7 +19,7 @@ class SortTable extends React.Component {
     const { sortIndex } = this.state
     const sortedRows = sortBy(columns[sortIndex].key)(rows)
     return (
-      <table>
+      <table className="sort-table">
         <thead>
           <tr>
             {columns.map((c, i) => (

@@ -1,0 +1,14 @@
+.sort-table {
+  border-collapse: collapse;
+
+  th, td {
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+  }
+
+  th {
+    cursor: pointer;
+    background: $primary-color;
+    color: #fff;
+  }
+}

@@ -1,0 +1,27 @@
+html, body, ul, ol {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+$primary-color: #c95d63;
+$text-color: #555;
+$text-color-bold: #333;
+
+body {
+  color: $text-color;
+}
+
+#root {
+  margin: 0 auto;
+  max-width: 60em;
+}
+
+h1, h2, strong {
+  color: $text-color-bold;
+}
+
+@import 'sort-table'
