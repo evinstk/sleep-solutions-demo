@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 import { REQUEST_PATIENTS, RECEIVE_PATIENTS, FAILURE_PATIENTS } from '../actions/data'
-import { ADD_QUERY_FILTER, MODIFY_QUERY_FILTER, SORT } from '../actions/user'
+import { ADD_QUERY_FILTER, MODIFY_QUERY_FILTER } from '../actions/user'
 import mergeAll from 'lodash/fp/mergeAll'
 
 const entities = (state = {
@@ -50,15 +50,6 @@ const queryFilters = (state = [], action) => {
   }
 }
 
-const sortField = (state = 'account_number', action) => {
-  switch (action.type) {
-  case SORT:
-    return action.field
-  default:
-    return state
-  }
-}
-
 const filters = combineReducers({
   queryFilters
 })
@@ -67,8 +58,7 @@ const rootReducer = combineReducers({
   entities,
   fetching,
   failureMessage,
-  filters,
-  sortField
+  filters
 })
 
 export default rootReducer

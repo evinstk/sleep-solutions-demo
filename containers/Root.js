@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { fetchPatients } from '../actions/data'
 import TableFilters from '../containers/TableFilters'
-import PatientTable from '../components/PatientTable'
+import PatientTable from '../containers/PatientTable'
 import { sort } from '../actions/user'
 import sortBy from 'lodash/fp/sortBy'
 import filter from 'lodash/fp/filter'
@@ -39,7 +39,7 @@ class Root extends React.Component {
               <div>Sorry, an error occurred: {failureMessage}</div> :
               <div>
                 <TableFilters />
-                <PatientTable patients={patients} onFieldClick={this.sort} />
+                <PatientTable />
               </div>
         }
       </div>
