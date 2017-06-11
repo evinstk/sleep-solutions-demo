@@ -41,9 +41,9 @@ const queryFilters = (state = [], action) => {
   case ADD_QUERY_FILTER:
     return [...state, action.filter]
   case MODIFY_QUERY_FILTER:
-    const { index, query } = action
+    const { index, filter } = action
     const queries = [...state]
-    queries[index] = { ...queries[index], query }
+    queries[index] = filter
     return queries
   default:
     return state

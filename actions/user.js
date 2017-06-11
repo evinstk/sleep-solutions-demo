@@ -10,8 +10,8 @@ export const addQueryFilter = () => ({
 
 export const MODIFY_QUERY_FILTER = 'MODIFY_QUERY'
 
-export const modifyQueryFilter = (query, index) => ({
+export const modifyQueryFilter = (filter, index) => ({
   type: MODIFY_QUERY_FILTER,
-  query,
+  filter,
   index
 })

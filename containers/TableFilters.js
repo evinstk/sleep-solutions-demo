@@ -4,6 +4,12 @@ import { addQueryFilter, modifyQueryFilter } from '../actions/user'
 import { connect } from 'react-redux'
 import Filter from '../components/Filter'
 
+const FIELDS = [
+  { value: 'account_number', text: 'Acct. #' },
+  { value: 'first_name', text: 'First Name' },
+  { value: 'last_name', text: 'Last Name' }
+]
+
 class TableFilters extends React.Component {
   constructor(props) {
     super(props)
@@ -14,8 +20,8 @@ class TableFilters extends React.Component {
     this.props.dispatch(addQueryFilter())
   }
 
-  modifyQueryFilter(query, index) {
-    this.props.dispatch(modifyQueryFilter(query, index))
+  modifyQueryFilter(filter, index) {
+    this.props.dispatch(modifyQueryFilter(filter, index))
   }
 
   render() {
@@ -23,10 +29,11 @@ class TableFilters extends React.Component {
     return (
       <div>
         <input type="button" value="Add Query Filter" onClick={this.addQueryFilter} />
-        {queryFilters.map(({ query }, i) => (
+        {queryFilters.map((filter, i) => (
           <Filter key={i}
-                  query={query}
-                  onQueryChange={newQuery => this.modifyQueryFilter(newQuery, i)} />
+                  filter={filter}
+                  fields={FIELDS}
+                  onFilterChange={newFilter => this.modifyQueryFilter(newFilter, i)} />
         ))}
       </div>
     )
