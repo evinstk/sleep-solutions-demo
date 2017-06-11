@@ -15,3 +15,10 @@ export const modifyQueryFilter = (filter, index) => ({
   filter,
   index
 })
+
+export const SORT = 'SORT'
+
+export const sort = field => ({
+  type: SORT,
+  field
+})
