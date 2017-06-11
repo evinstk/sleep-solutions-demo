@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 import { REQUEST_PATIENTS, RECEIVE_PATIENTS, FAILURE_PATIENTS } from '../actions/data'
-import { ADD_QUERY_FILTER } from '../actions/user'
+import { ADD_QUERY_FILTER, MODIFY_QUERY_FILTER } from '../actions/user'
 import mergeAll from 'lodash/fp/mergeAll'
 
 const entities = (state = {
@@ -40,6 +40,11 @@ const queryFilters = (state = [], action) => {
   switch (action.type) {
   case ADD_QUERY_FILTER:
     return [...state, action.filter]
+  case MODIFY_QUERY_FILTER:
+    const { index, query } = action
+    const queries = [...state]
+    queries[index] = { ...queries[index], query }
+    return queries
   default:
     return state
   }

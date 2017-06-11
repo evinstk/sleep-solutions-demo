@@ -7,3 +7,11 @@ export const addQueryFilter = () => ({
     query: ''
   }
 })
+
+export const MODIFY_QUERY_FILTER = 'MODIFY_QUERY'
+
+export const modifyQueryFilter = (query, index) => ({
+  type: MODIFY_QUERY_FILTER,
+  query,
+  index
+})
