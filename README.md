@@ -3,7 +3,7 @@ Sleep Solutions Demo
 
 This application reads an array of objects from an endpoint and displays them on a page. It demonstrates knowledge of front-end technologies like React and Redux.
 
-To run, you will need to have the `gulp-cli` installed:
+To run, you will need to have [Node.js](https://nodejs.org/en/), [NPM](https://www.npmjs.com/), and [gulp](http://gulpjs.com/) installed. After installing Node.js and NPM for your system, install the gulp CLI with:
 
     $ npm install -g gulp-cli
 
