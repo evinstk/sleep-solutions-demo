@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { fetchPatients } from '../actions/data'
+import Instructions from '../components/Instructions'
 import TableFilters from '../containers/TableFilters'
 import PatientTable from '../containers/PatientTable'
 import { sort } from '../actions/user'
@@ -31,13 +32,14 @@ class Root extends React.Component {
 
     return (
       <div>
-        <h1>Patients</h1>
+        <h1>Patient Records</h1>
         {
           fetching ?
             <div>Getting patient data</div> :
             failureMessage ?
               <div>Sorry, an error occurred: {failureMessage}</div> :
               <div>
+                <Instructions />
                 <TableFilters />
                 <PatientTable />
               </div>

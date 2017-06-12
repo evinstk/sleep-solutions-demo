@@ -25,5 +25,6 @@ h1, h2, strong {
   color: $text-color-bold;
 }
 
+@import 'instructions';
 @import 'filter';
 @import 'sort-table';
