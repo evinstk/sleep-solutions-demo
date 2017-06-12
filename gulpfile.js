@@ -7,7 +7,7 @@ const sourcemaps = require('gulp-sourcemaps')
 const gutil = require('gulp-util')
 const sass = require('gulp-sass')
 
-gulp.task('default', () => {
+gulp.task('react', () => {
   const b = browserify({
     entries: './app.js',
     debug: true,
@@ -46,3 +46,5 @@ gulp.task('watch', () => {
   ], ['default'])
   gulp.watch('./scss/**/*.scss', ['sass'])
 })
+
+gulp.task('default', ['react', 'sass'])
