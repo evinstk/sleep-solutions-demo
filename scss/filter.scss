@@ -1,5 +1,9 @@
 .table-filters {
   display: flex;
+  background: #eee;
+  border-radius: 8px;
+  max-width: 40rem;
+  margin-bottom: 0.5rem;
 
   > div {
     margin: 0.5rem;
