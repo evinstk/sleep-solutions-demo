@@ -12,7 +12,7 @@ import momentTZ from 'moment-timezone'
 const TIME_FORMAT = 'MMM DD, YYYY h:mm:ss a'
 const timeDisplay = time => momentTZ(time).tz('Zulu').format(TIME_FORMAT)
 
-const columns = [
+const COLUMNS = [
   { key: 'account_number', text: 'Acct. #' },
   { key: 'last_name', text: 'Last Name' },
   { key: 'first_name', text: 'First Name' },
@@ -23,7 +23,7 @@ const columns = [
 class PatientTable extends React.Component {
   render() {
     const { patients } = this.props
-    return <SortTable columns={columns} rows={patients} />
+    return <SortTable columns={COLUMNS} rows={patients} />
   }
 }
 

@@ -10,5 +10,10 @@
     cursor: pointer;
     background: $primary-color;
     color: #fff;
+    font-weight: 500;
+
+    &.sort-column {
+      font-weight: 900;
+    }
   }
 }

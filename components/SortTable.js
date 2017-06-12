@@ -23,7 +23,9 @@ class SortTable extends React.Component {
         <thead>
           <tr>
             {columns.map((c, i) => (
-              <th key={i} onClick={() => this.sortColumn(i)}>{c.text}</th>
+              <th key={i}
+                  onClick={() => this.sortColumn(i)}
+                  className={i === sortIndex ? 'sort-column' : ''}>{c.text}</th>
             ))}
           </tr>
         </thead>
